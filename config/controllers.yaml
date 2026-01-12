@@ -1,0 +1,39 @@
+controller_manager:
+  ros__parameters:
+    update_rate: 1000
+
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+    arm_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+    gripper_controller_position:
+      type: position_controllers/GripperActionController
+      
+
+gripper_controller_position:
+  ros__parameters:
+    joint: gripper_controller
+    
+    
+
+
+arm_controller:
+  ros__parameters:
+    joints:
+          - link1_to_link2
+          - link2_to_link3
+          - link3_to_link4
+          - link4_to_link5
+          - link5_to_link6
+          - link6_to_flange_link
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+      - velocity
+
+
+
+

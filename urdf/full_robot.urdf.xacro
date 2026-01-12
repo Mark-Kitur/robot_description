@@ -1,0 +1,13 @@
+<?xml version="1.0" ?>
+<robot name="full_robot" xmlns:xacro="http://wiki.ros.org/xacro">
+    <!-- ROBOT ARM -->
+    <xacro:include filename="$(find robot_description)/urdf/robot_arm.urdf.xacro"/>
+
+    <!-- ROBOT GRIPPER -->
+    <xacro:include filename="$(find robot_description)/urdf/adaptive_gripper.urdf.xacro"/>
+    <xacro:adaptive_gripper parent="flange_link"/>
+    
+    <!--ROBOT CONTROL-->
+    <xacro:include filename="$(find robot_description)/urdf/robot_control.urdf.xacro"/>
+
+</robot>
