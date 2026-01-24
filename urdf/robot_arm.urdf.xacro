@@ -57,7 +57,7 @@
             <geometry>
                 <mesh filename="file://$(find robot_description)/meshes/g_shape_base_v2_0/visual/base_link.dae"/>
             </geometry>
-            <origin xyz="0.0 0 -0.03" rpy="0 0 ${pi/2}"/>
+            <origin xyz="0.0 0 -0.03" rpy="0 0 1.5708"/>
         </visual>
         <collision>
             <geometry>
@@ -83,7 +83,7 @@
         <geometry>
           <mesh filename="file://$(find robot_description)/meshes/mycobot_280/visual/link1.dae"/>
         </geometry>
-        <origin xyz="0.0 0 0" rpy="0 0 ${-pi/2}"/>
+        <origin xyz="0.0 0 0" rpy="0 0 -1.5708"/>
       </visual>
       <collision>
         <geometry>
@@ -99,13 +99,13 @@
         <geometry>
           <mesh filename="file://$(find robot_description)/meshes/mycobot_280/visual/link2.dae"/>
         </geometry>
-        <origin xyz="0.0 0 -0.06096" rpy="0 0 ${-pi/2}"/>
+        <origin xyz="0.0 0 -0.06096" rpy="0 0 -1.5708"/>
       </visual>
       <collision>
         <geometry>
           <cylinder radius="0.025" length="0.085"/>
         </geometry>
-        <origin xyz="0.0 0 -0.02" rpy="0 0 ${-pi/2}"/>
+        <origin xyz="0.0 0 -0.02" rpy="0 0 -1.5708"/>
       </collision>
     </link>
 
@@ -115,13 +115,13 @@
         <geometry>
           <mesh filename="file://$(find robot_description)/meshes/mycobot_280/visual/link3.dae"/>
         </geometry>
-        <origin xyz="0.0 0 0.03256" rpy="0 ${-pi/2} 0"/>
+        <origin xyz="0.0 0 0.03256" rpy="0 -1.5708 0"/>
       </visual>
       <collision>
         <geometry>
           <cylinder radius="0.025" length="0.15"/>
         </geometry>
-        <origin xyz="-0.058 0 0.059" rpy="0 ${-pi/2} 0"/>
+        <origin xyz="-0.058 0 0.059" rpy="0 -1.5708 0"/>
       </collision>
     </link>
 
@@ -131,13 +131,13 @@
         <geometry>
           <mesh filename="file://$(find robot_description)/meshes/mycobot_280/visual/link4.dae"/>
         </geometry>
-        <origin xyz="0.0 0 0.03056" rpy="0 ${-pi/2} 0"/>
+        <origin xyz="0.0 0 0.03056" rpy="0 -1.5708 0"/>
       </visual>
       <collision>
         <geometry>
           <cylinder radius="0.025" length="0.125"/>
         </geometry>
-        <origin xyz="-0.05 0 0.0" rpy="0 ${-pi/2} 0"/>
+        <origin xyz="-0.05 0 0.0" rpy="0 -1.5708 0"/>
       </collision>
     </link>  
 
@@ -147,7 +147,7 @@
         <geometry>
           <mesh filename="file://$(find robot_description)/meshes/mycobot_280/visual/link5.dae"/>
         </geometry>
-        <origin xyz="0.0 0 -0.03356" rpy="${-pi/2} 0 0"/>
+        <origin xyz="0.0 0 -0.03356" rpy="-1.5708 0 0"/>
       </visual>
       <collision>
         <geometry>
@@ -169,7 +169,7 @@
         <geometry>
           <cylinder radius="0.025" length="0.06"/>
         </geometry>
-        <origin xyz="0 0.00 0.0" rpy="${-pi/2} 0 0"/>
+        <origin xyz="0 0.00 0.0" rpy="-1.5708 0 0"/>
       </collision>
     </link>
 
@@ -211,12 +211,7 @@
       </inertial>
     </link>
 
-    <joint name="camera_link" type="fixed">
-      <parent link="base_link"/>
-      <child link="camera_link"/>
-      <origin xyz="0 0 1" rpy=" 0 1.571 -1.571"/>
 
-    </joint>
 
 
     <joint name="base_link_to_link1" type="fixed">
@@ -229,7 +224,7 @@
       <limit effort="${joint_effort}" lower="-2.879793" upper="2.879793" velocity="${joint_velocity}"/>
       <parent link="link1"/>
       <child link="link2"/>
-      <origin xyz="0 0 0.13156" rpy="0 0 ${pi/2}"/>
+      <origin xyz="0 0 0.13156" rpy="0 0 1.5708"/>
       <dynamics damping="${joint_damping}" friction="${joint_friction}"/>
     </joint>
 
@@ -238,7 +233,7 @@
       <limit effort="${joint_effort}" lower="-2.879793" upper="2.879793" velocity="${joint_velocity}"/>
       <parent link="link2"/>
       <child link="link3"/>
-      <origin xyz="0 0 -0.001" rpy="0 ${pi/2} ${-pi/2}"/>
+      <origin xyz="0 0 -0.001" rpy="0 1.5708 -1.5708"/>
       <dynamics damping="${joint_damping}" friction="${joint_friction}"/>
     </joint>
 
@@ -256,7 +251,7 @@
       <limit effort="${joint_effort}" lower="-2.879793" upper="2.879793" velocity="${joint_velocity}"/>
       <parent link="link4"/>
       <child link="link5"/>
-      <origin xyz="-0.096 0 0.06062" rpy="0 0 ${-pi/2}"/>
+      <origin xyz="-0.096 0 0.06062" rpy="0 0 -1.5708"/>
       <dynamics damping="${joint_damping}" friction="${joint_friction}"/>
     </joint>
 
@@ -265,7 +260,7 @@
       <limit effort="${joint_effort}" lower="-2.879793" upper="2.879793" velocity="${joint_velocity}"/>
       <parent link="link5"/>
       <child link="link6"/>
-      <origin xyz="0 -0.07318 0" rpy="${pi/2} ${-pi/2} 0"/>
+      <origin xyz="0 -0.07318 0" rpy="1.5708 -1.5708 0"/>
       <dynamics damping="${joint_damping}" friction="${joint_friction}"/>
     </joint>
 
@@ -274,8 +269,15 @@
       <limit effort="${joint_effort}" lower="-3.05" upper="3.05" velocity="${joint_velocity}"/>
       <parent link="link6"/>
       <child link="flange_link"/>
-      <origin xyz="0 0.0456 0" rpy="${-pi/2} 0 0"/>
+      <origin xyz="0 0.0456 0" rpy="-1.5708 0 0"/>
       <dynamics damping="${joint_damping}" friction="${joint_friction}"/>
+    </joint>
+
+    <joint name="camera_link" type="fixed">
+      <parent link="base_link"/>
+      <child link="camera_link"/>
+      <origin xyz="0 0 1" rpy=" 0 1.571 -1.571"/>
+
     </joint>
 
     <xacro:material_visual ref_link="link1" ambient="0.5 0.5 0.5 1" diffuse="0.5 0.5 0.5 1" specular="0.5 0.5 0.5 1"/>

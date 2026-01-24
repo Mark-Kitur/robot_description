@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-import rclpy, math
+import rclpy, math,time
 from rclpy.node import Node
 from trajectory_msgs.msg import JointTrajectory, JointTrajectoryPoint
 from builtin_interfaces.msg import Duration
@@ -42,9 +42,14 @@ class ControlRobot(Node):
         self.timer = self.create_timer(self.timer_period, self.timer_callback)
 
         # Precomputed positions
-        self.positions=[
-                1.0979,1.5236,1.5707, 1.5236, 0.0,0.0
+        positions =[
+                1.3233,-1.8005,1.3168, 4.85213, -5.61860,0.0
             ]
+        self.positions_false=[0,0,0,0,0,0]
+        for i in range(len(positions)):
+            self.positions_false.insert(i,positions[i])
+            time.sleep(1000)
+            self.positions = self.positions_false[:6]
 
         self.gripper_open = 0.12
         self.gripper_closed = -0.63

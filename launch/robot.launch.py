@@ -94,12 +94,12 @@ def generate_launch_description():
 
     ld.add_action(set_model)
     ld.add_action(robot_state_publisher_node)
-    # ld.add_action(gazebo)
-    # ld.add_action(spawn_node)
-    # ld.add_action(joint_timer)
-    # ld.add_action(arm_timer)
-    # ld.add_action(gripper_timer)
-    ld.add_action(rviz_node)
-    ld.add_action(joint_state_gui)
+    ld.add_action(gazebo)
+    ld.add_action(spawn_node)
+    ld.add_action(joint_timer)
+    ld.add_action(arm_timer)
+    ld.add_action(gripper_timer)
+    # ld.add_action(rviz_node)
+    # ld.add_action(joint_state_gui)
 
     return ld
